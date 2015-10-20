@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>幻灯片旋转木马效果</title>
+	<link rel="stylesheet" type="text/css" href="css/carousel.css">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/carousel.js"></script>
+</head>
+<body>
+	<div class="J_Carousel poster-main" data-settings ='{
+														"width":840,
+														"height":360,
+														"abd":"fas",
+														"posterWidth":600,
+														"posterHeight":360,
+														"verticalAlign":"middle",
+														"scale":0.9,
+														"speed":800,
+														"autoPlay":true,
+														"intervalTime":2000
+														}'>
+	
+		<div class="poster-bnt poster-prev-bnt"></div>
+		<ul class="poster-list">
+			<li class="poster-item"><a href="#"><img src="./imgs/1.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/2.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/3.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/4.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/5.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/6.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/7.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/8.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/9.jpg" width="100%"></a></li>
+			
+		</ul>
+		<div class="poster-bnt poster-next-bnt"></div>
+		
+	</div>
+	<!-- <div class="J_Carousel poster-main" data-settings ='{
+														"width":1000,
+														"height":270,
+														"abd":"fas",
+														"posterWidth":640,
+														"posterHeight":270,
+														"verticalAlign":"top",
+														
+														"scale":0.8,
+														"speed":500
+														}'>
+	
+		<div class="poster-bnt poster-prev-bnt"></div>
+		<ul class="poster-list">
+			<li class="poster-item"><a href="#"><img src="./imgs/1.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/2.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/3.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/4.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/5.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/2.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/3.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/4.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/5.jpg" width="100%"></a></li>
+		</ul>
+		<div class="poster-bnt poster-next-bnt"></div>
+		
+	</div>
+	
+	
+	
+	
+	<div class="J_Carousel poster-main" data-settings ='{
+														"width":1000,
+														"height":270,
+														"abd":"fas",
+														"posterWidth":640,
+														"posterHeight":270,
+														"verticalAlign":"bottom",
+														"scale":0.7,
+														"speed":500
+														}'>
+	
+		<div class="poster-bnt poster-prev-bnt"></div>
+		<ul class="poster-list">
+			<li class="poster-item"><a href="#"><img src="./imgs/1.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/2.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/3.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/4.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/5.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/2.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/3.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/4.jpg" width="100%"></a></li>
+			<li class="poster-item"><a href="#"><img src="./imgs/5.jpg" width="100%"></a></li>
+		</ul>
+		<div class="poster-bnt poster-next-bnt"></div>
+		
+	</div>
+	 -->
+</body>
+<script type="text/javascript">
+	$(function(){
+		//创建一个Carousel类
+		/*var carousel = new Carousel($(".J_Carousel").eq(0));*/
+		//封装成一个类，这样就直接把J_Carousel这一整个给传过去了，不要每次都去new
+
+		//配置参数
+		/*var settings = {
+			"width":1000,
+			"height":270,
+			"poster-width":640,
+			"poster-height":270,
+			"verticalAlign":"middle",
+			"scale":0.9,
+			"speed":500
+		};*/
+		Carousel.init($(".J_Carousel"));
+		
+
+	});
+
+
+</script>
+</html>
