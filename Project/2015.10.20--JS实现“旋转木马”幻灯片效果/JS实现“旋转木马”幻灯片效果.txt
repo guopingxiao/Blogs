@@ -1,0 +1,72 @@
+一、面向用户
+	1、扎实的CSS基础
+	2、初级、中级前端开发者
+	3、有一定的面向对象基础
+	4、Js作用域，this比较熟悉
+	
+	
+二：要求
+	1、HTML语言基本语法
+	2、CSS样式---Class，选择器，圆角
+	3、JQuery中的--$(selector),.animate, .next,.prev, .setInterval
+	
+三：课程安排
+
+	1、DOM结构结构编写
+	2、CSS样式初始化
+	3、JS + 搭建基础开发结构
+	4、分析需要就行操作的DOM节点
+	5、位置关系的分析
+	6、初始化位置函数的编写
+	7、左右旋转函数的编写
+	
+四、参数配置
+	为什么不要这么去配参数呢？
+	---封装成一个插件，要形成插件分离的效果。每个插架要有自己的settings，而不是一下就写死了。
+	$(function(){
+		//创建一个Carousel类
+		/*var carousel = new Carousel($(".J_Carousel").eq(0));*/
+		//封装成一个类，这样就直接把J_Carousel这一整个给传过去了，不要每次都去new
+JS实现“旋转木马”幻灯片效果
+		//配置参数
+		var settings = {
+			"width":1000,
+			"height":270,
+			"poster-width":640,
+			"poster-height":270,
+			"verticalAlign":"middle",
+			"scale":0.9,
+			"speed":500
+		};
+		Carousel.init($(".J_Carousel"),settings);
+	});
+	
+	
+	(function($){
+	var Carousel = function(poster, settings){
+		console.log(settings);
+	};
+	Carousel.prototype ={
+
+	};
+
+	//初始化函数
+	Carousel.init = function(posters,settings){
+		var _this_ = this;
+		posters.each(function(){
+			//new Carousel(this);
+			new _this_($(this),settings);
+		});
+	};
+	window["Carousel"] = Carousel;
+
+})(jQuery);
+
+
+五、按钮和第一帧层级关系设置 z-index
+六、右边帧的位置关系设置
+七、知识点总结
+
+	Css: --定位，层级，透明度。。。
+	JS: -- 类的封装prototype，this（如何控制this的漂移）,参数配置，位置关系分析，旋转逻辑，
+		-- JQuery API， next,prev，animate, find, children, 事件
