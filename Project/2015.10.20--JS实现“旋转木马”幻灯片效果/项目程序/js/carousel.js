@@ -1,5 +1,6 @@
 ;//方便js合并
 (function($){
+	//建立一个Carousel类
 	var Carousel = function(poster){
 		//console.log(poster.attr("data-settings"));//Jquery取得节点属性 attr属性
 		var self = this;
@@ -18,7 +19,6 @@
 		this.posterFirstItem = this.posterItems.first();//首帧
 		this.posterLastItem = this.posterItems.last();//尾帧
 
-	
 	//配置默认参数
 		this.settings ={
 					"width":800, //幻灯片的宽度
@@ -260,12 +260,13 @@
 
 	};
 
-	//初始化函数
+	//初始化函数,实例化得到一个Carousel 对象
 	Carousel.init = function(poster){
-		var _this_ = this;
+		var _this_ = this; //this--> 指向Carousel
 		poster.each(function(){
-			//new Carousel(this);
-			new _this_($(this));
+			console.log($(this));
+			new _this_($(this))
+			console.log(new _this_($(this)));  //===>new Carousel($(".J_Carousel"));
 		});
 	};
 	//windows事件注册
