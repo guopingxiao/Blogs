@@ -1,0 +1,104 @@
+练习小demo
+
+
+小伙伴们，根据所学知识，实现编写以下菜单效果
+
+
+
+任务
+任务要求：
+
+点击标题时判断该标题下的菜单是否显示，如果是显示的则将其隐藏，如果是隐藏的则将其显示出来。
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+    *{margin:0;
+     padding:0;
+     font-size:13px;
+     list-style:none;}
+
+.menu{width:210px;
+      margin:50px auto;
+      border:1px solid #ccc;}
+
+.menu p{height:25px;
+        line-height:25px;
+        font-weight:bold;
+        background:#eee;
+        border-bottom:1px solid #ccc;
+        cursor:pointer;
+        padding-left:5px;}
+
+.menu div ul{display:none;}
+
+.menu li{height:24px;
+         line-height:24px;
+         padding-left:5px;}
+</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		
+      // 将所有点击的标题和要显示隐藏的列表取出来
+
+     // 遍历所有要点击的标题且给它们添加索引及绑定事件
+
+     // 获取点击的标题上的索引属性，根据该索引找到对应的列表
+
+     // 判断该列表，如果是显示的则将其隐藏，如果是隐藏的则将其显示出来
+
+	}
+	</script>
+</head>
+<body>
+	<div class="menu" id="menu">
+		<div>
+			<p>Web前端</p>
+			<ul style="display:block">
+				<li>JavaScript</li>
+				<li>DIV+CSS</li>
+				<li>jQuery</li>
+			</ul>
+		</div>
+		<div>
+			<p>后台脚本</p>
+			<ul>
+				<li>PHP</li>
+				<li>ASP.net</li>
+				<li>JSP</li>
+			</ul>
+		</div>
+		<div>
+			<p>前端框架</p>
+			<ul>
+				<li>Extjs</li>
+				<li>Esspress</li>
+				<li>YUI</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+在自动播放中，没有鼠标滑过，这样就定位不到相应的DOM节点，这样就要通过定时器来计算索引。把高亮显示放在定时器中，用变量接收索引值，就OK了。
+
+
+
+
+编程练习
+小伙伴们，根据所学知识，实现点击“发送验证码”按钮后，按钮依次显示为“59秒后重试”、“58秒后重试”…直至倒计时至0秒时再恢复显示为“发送验证码”。在倒计时期间按钮为禁用状态
+
+
+
+任务
+第一步、获取按钮、绑定事件、设置定时器变量和计时变量
+
+第二步、添加定时器，每隔1秒钟计时减 1，直至当计时小于等于 0 时清除定时器，按钮恢复为“发送验证码”，否则显示为“X秒后重试”
+
+

@@ -1,0 +1,57 @@
+
+/* 初始化页面样式 */
+*{margin:0;
+  padding:0;
+  list-style:none;
+  font-size:12px;}
+
+.notice{width:298px;
+        height:98px;
+        margin:10px;
+        border:1px solid #eee;
+        overflow:hidden;}
+
+.notice-title{height:27px;
+            position:relative;
+            background:#F7F7F7;}
+
+.notice-title ul{position:absolute;
+               width:301px;
+               left:-1px;}
+
+.notice-title li{float:left;
+               width:58px; (300-2*5)/5;左右各1px 的边距 = 2px;
+               height:26px;
+               line-height:26px;
+               text-align:center;
+               overflow:hidden;
+               background:#FFF;
+               padding:0 1px;
+               background:#F7F7F7;
+               border-bottom:1px solid #eee;}
+
+.notice-title li.selected{background: #FFF;
+						  border-bottom-color: #fff;
+						  border-left: 1px solid #eee;
+						  border-right: 1px solid #eee;
+						  font-weight: bolder;
+						  padding: 0px;}/* 这个padding很重要，不然会造成文档塌陷，58+2+2 =62 > 60； */
+
+.notice- li a:link, title li a:visited{
+	text-decoration: none;color: #fefefe;
+}
+
+.notice li a:hover{color: #f90;}
+
+.notice-contents ul{
+	margin:10px 10px 10px 20px;
+
+}
+
+.notice-contents ul li{
+	float: left;
+	width:134px;/* (298-30)/2 = 134; */
+	height: 25px;
+	overflow: hidden;
+}
+
