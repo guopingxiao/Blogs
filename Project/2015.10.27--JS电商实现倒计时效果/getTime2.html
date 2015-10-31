@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>获取时间</title>
+	<script type="text/javascript">
+	window.onload = function(){
+		deadTime();
+	}
+	function deadTime(){
+		var nowTime = new Date();
+		var finalTime = new Date("2015-11-11");
+		var lefttime = (finalTime.getTime() - nowTime.getTime())/(1000*24*60*60);
+		var date = Math.ceil(lefttime);
+		document.getElementById("time").innerHTML = date;
+	}
+
+	
+	
+	</script>
+</head>
+<body>
+	<div >距离双十一还有：<span id ='time'></span>天</div>
+</body>
+</html>
