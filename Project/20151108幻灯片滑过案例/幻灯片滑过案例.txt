@@ -1,0 +1,20 @@
+
+
+为了实现堆叠的目的：将目标元素转化为block元素，父元素设置为absolute，目标元素设置为relative，全部左对齐为left:0
+overflow:hidden,溢出的时候进行隐藏
+图片的三个属性：src：图片的位置 alt：图片出不来的时候显示的内容 title：鼠标在图片上时显示的文字
+
+
+专注的领域不同，选择不同：
+HTML---（超文本标记语言）用来显示数据，不能解释影音文件和化学公式等，不利于扩展
+XML---（可扩展标记语言）用来描述数据，什么是数据，存放格式化数据,神奇的xml 标签能随便起名字 甚至可以用中文
+XHTML---（早期 HTML与xml合并作用）
+
+DocumentFragment节点使用示例，DocumentFragment文本片段节点可以作为一个占位符，来保存其他需要一次性插入文档的节点，当将其插入到某个节点内时，只是插入其所有子孙节点，其本身不会被插入！
+
+
+1、重新认识DOM 2、剖析domReady ---浏览器渲染原理http://kb.cnblogs.com/page/129756/3、学会元素节点的类型判断、继承层次和分类
+
+【DOM】DOMReady实现策略
+http://www.cnblogs.com/JulyZhang/archive/2011/02/12/1952484.html
+http://www.cnblogs.com/zhangziqiu/archive/2011/06/27/DOMReady.html
