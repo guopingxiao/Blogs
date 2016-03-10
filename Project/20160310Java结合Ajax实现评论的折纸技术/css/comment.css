@@ -1,0 +1,52 @@
+*{padding: 0px;margin: 0px}
+body{font-size: 14px;font-family: "微软雅黑";background: #f3f3f3;}
+
+/*start header*/
+.header{background: #FFF;}
+.header .imgbox{width: 1280px;height: 56px;margin: 0px auto;}
+
+/*start content*/
+.content{ width: 1040px; background: #f9f9f9;
+	margin: 20px auto;}
+.content h1{font-size: 24px;padding:30px;
+	text-align: center;}
+.content .parag{padding: 0px 30px;}
+.content .parag p{text-indent: 2em; line-height: 25px;margin-top: 20px; font-size: 16px;}
+
+/*start commentbox*/
+
+.commentbox{
+	height: 320px;width: 1040px;margin: 0 auto;-webkit-perspective: 800px;
+}
+.commentbox h1{height: 160px;background: #000;color: #fff;position: absolute;z-index: 10; width: 100%}
+
+.commentbox div{position:relative; margin-top: 15px;width: 100%; 
+	-webkit-transform-origin:top; 
+	-webkit-transform-style:preserve-3d;
+	-webkit-transform:rotateX(-90deg);
+}
+
+.commentbox span{display: block;height: 120px;background:#9EBE9C;text-indent: 2em;
+   color: #fff;
+   }
+
+/*关键帧*/
+@-webkit-keyframes open{
+	from{-webkit-transform:rotateX(-90deg);}
+    /*25%{-webkit-transform:rotateX(30deg);}
+    50%{-webkit-transform:rotateX(-10deg);}
+    75%{-webkit-transform:rotateX(5deg);}*/
+	to{-webkit-transform:rotateX(0deg);}
+}
+
+@-webkit-keyframes hide{
+	from{-webkit-transform:rotateX(0deg);}
+	to{-webkit-transform:rotateX(-90deg);}
+}
+
+.commentbox .show{-webkit-animation:open 1s; -webkit-transform:rotateX(0deg);}
+.commentbox .hide{-webkit-animation:hide 1s; -webkit-transform:rotateX(-90deg);}
+.commentbox #commentBnt{width: 90%;height: 100%}
+#commentText a{font-size: 16px;text-decoration: none;color: #FFF;text-align: right;
+    bottom: 60px;position: relative;/*相对定位，在自己原来的位子上，bottom加60px;*/
+}
