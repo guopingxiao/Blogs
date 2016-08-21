@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>用 全栈神技electron 打全平台桌面级 app--Music Player</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>什么是Electron？</h1>
+<p>Electron 技术方案进行桌面端的开发，跨平台兼容 macOS、Windows、Linux 等操作系统。可以让你写使用 JavaScript，HTML 和 CSS 构建跨平台的桌面应用程序。</p>
+<p><img src="http://i.imgur.com/Q5NgHkh.jpg" /></p>
+<h1>快速入门</h1>
+<p>Electron 可以让你使用纯 JavaScript 调用丰富的原生 APIs 来创造桌面应用。你可以把它看作一个专注于桌面应用的 Node.js 的变体，而不是 Web 服务器。</p>
+<p>这不意味着 Electron 是绑定了 GUI 库的 JavaScript。相反，Electron 使用 web 页面作为它的 GUI，所以你能把它看作成一个被 JavaScript 控制的，精简版的 Chromium 浏览器。</p>
+<p>先来一个快速入门的案例（需要安装nodeJs和git）：
+```bash</p>
+<h1>克隆这仓库</h1>
+<p>$ git clone https://github.com/electron/electron-quick-start electrondemo --depth 1</p>
+<h1>进入仓库</h1>
+<p>$ cd electron-quick-start</p>
+<h1>安装依赖库并运行应用</h1>
+<p>$ npm install &amp;&amp; npm start
+```</p>
+<p>大体上，一个 Electron 应用的目录结构如下：
+<code>your-app/
+├── package.json
+├── main.js
+└── index.html</code>
+<code>package.json</code>的格式和 Node 的完全一致，并且那个被 <code>main</code> 字段声明的脚本文件是你的应用的启动脚本，它运行在主进程上。你应用里的 <code>package.json</code> 看起来应该像：</p>
+<pre><code>```json
+{
+  &quot;name&quot;    : &quot;your-app&quot;,
+  &quot;version&quot; : &quot;0.1.0&quot;,
+  &quot;main&quot;    : &quot;main.js&quot;
+}
+```
+</code></pre>
+
+<p><strong>注意</strong>：如果 <code>main</code> 字段没有在 <code>package.json</code> 声明，Electron会优先加载 <code>index.js</code>。</p>
+<p><code>main.js</code> 应该用于创建窗口和处理系统事件，一个典型的例子如下：
+	```javascript
+	const electron = require('electron');
+	// 控制应用生命周期的模块。
+	const {app} = electron;
+	// 创建原生浏览器窗口的模块。
+	const {BrowserWindow} = electron;</p>
+<pre><code>// 保持一个对于 window 对象的全局引用，如果你不这样做，
+// 当 JavaScript 对象被垃圾回收， window 会被自动地关闭
+let mainWindow;
+
+function createWindow() {
+  // 创建浏览器窗口。
+  mainWindow = new BrowserWindow({width: 800, height: 600});
+
+  // 加载应用的 index.html。
+  mainWindow.loadURL(`file://${__dirname}/index.html`);
+
+  // 启用开发工具。
+  mainWindow.webContents.openDevTools();
+
+  // 当 window 被关闭，这个事件会被触发。
+  mainWindow.on('closed', () =&gt; {
+    // 取消引用 window 对象，如果你的应用支持多窗口的话，
+    // 通常会把多个 window 对象存放在一个数组里面，
+    // 与此同时，你应该删除相应的元素。
+    mainWindow = null;
+  });
+}
+
+// Electron 会在初始化后并准备
+// 创建浏览器窗口时，调用这个函数。
+// 部分 API 在 ready 事件触发后才能使用。
+app.on('ready', createWindow);
+
+// 当全部窗口关闭时退出。
+app.on('window-all-closed', () =&gt; {
+  // 在 macOS 上，除非用户用 Cmd + Q 确定地退出，
+  // 否则绝大部分应用及其菜单栏会保持激活。
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () =&gt; {
+  // 在 macOS 上，当点击 dock 图标并且该应用没有打开的窗口时，
+  // 绝大部分应用会重新创建一个窗口。
+  if (mainWindow === null) {
+    createWindow();
+  }
+});
+
+// 在这文件，你可以续写应用剩下主进程代码。
+// 也可以拆分成几个文件，然后用 require 导入。
+```
+</code></pre>
+
+<p>最后，展示的 <code>index.html</code> ：
+```html
+&lt;!DOCTYPE html&gt;
+<html></p>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+<p><body>
+    <h1>Hello World!</h1>
+    We are using node <script>document.write(process.versions.node)</script>,
+    Chrome <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
+  </body>
+</html>
+```</p>
+<h1>运行你的应用</h1>
+<p>一旦你创建了最初的 <code>main.js</code>， <code>index.html</code> 和 <code>package.json</code> 这几个文件，你可能会想尝试在本地运行并测试，看看是不是和期望的那样正常运行。</p>
+<p><img src="http://i.imgur.com/It7yNw9.jpg" /></p>
+<h2>主进程</h2>
+<p>在 Electron 里，运行 <code>package.json</code> 里 <code>main</code> 脚本的进程被称为<strong>主进程</strong>。在主进程运行的脚本可以以创建 web 页面的形式展示 GUI。</p>
+<h2>渲染进程</h2>
+<p>由于 Electron 使用 Chromium 来展示页面，所以 Chromium 的多进程结构也被充分利用。每个 Electron 的页面都在运行着自己的进程，这样的进程我们称之为<strong>渲染进程</strong>。</p>
+<p>在一般浏览器中，网页通常会在沙盒环境下运行，并且不允许访问原生资源。然而，Electron 用户拥有在网页中调用 Node.js 的 APIs 的能力，可以与底层操作系统直接交互。</p>
+<p><img src="http://i.imgur.com/gT50O43.png" /></p>
+<h2>主进程与渲染进程的区别</h2>
+<p>主进程使用 <code>BrowserWindow</code> 实例创建页面。每个 <code>BrowserWindow</code> 实例都在自己的渲染进程里运行页面。当一个 <code>BrowserWindow</code> 实例被销毁后，相应的渲染进程也会被终止。</p>
+<p>主进程管理所有页面和与之对应的渲染进程。每个渲染进程都是相互独立的，并且只关心他们自己的页面。</p>
+<p>由于在页面里管理原生 GUI 资源是非常危险而且容易造成资源泄露，所以在页面调用 GUI 相关的 APIs 是不被允许的。如果你想在网页里使用 GUI 操作，其对应的渲染进程必须与主进程进行通讯，请求主进程进行相关的 GUI 操作。
+<img src="http://i.imgur.com/ZF5kUzG.png" /></p>
+<p>在 Electron，我们提供几种方法用于主进程和渲染进程之间的通讯。像 [ipcRenderer] 和 [ipcMain] 模块用于发送消息， [remote] 模块用于 RPC 方式通讯。</p>
+<h2>electron-prebuilt</h2>
+<p>[electron-prebuilt] 是一个 <code>npm</code> 模块，包含所使用的 Electron 预编译版本。 
+如果你已经用 <code>npm</code> 全局安装了它，你只需要按照如下方式直接运行你的应用：
+<code>bash
+electron .</code>
+如果你是局部安装，那运行：
+<code>bash
+./node_modules/.bin/electron .</code></p>
+<h2>手工下载 Electron 二进制文件</h2>
+<p>如果你手工下载了 Electron 的二进制文件，你也可以直接使用其中的二进制文件直接运行你的应用。</p>
+<h3>Windows</h3>
+<p><code>bash
+$ .\electron\electron.exe your-app\</code></p>
+<h3>Linux</h3>
+<p><code>bash
+$ ./electron/electron your-app/</code></p>
+<h3>macOS</h3>
+<p><code>bash
+$ ./Electron.app/Contents/MacOS/Electron your-app/</code>
+<code>Electron.app</code> 里面是 Electron 发布包</p>
+<h1>打造你第一个全端的桌面音乐播放器</h1>
+<p>新建一个my-music 的工程，npm init 初始化该项目，进入项目，查看package.json文件；</p>
+<p>将my-music 下面的除了package.json文件拷贝到新建的目录下面；</p>
+<p>安装依赖electron; 可以使用npm.taobao.com 淘宝镜像；</p>
+<p><code>{
+  &quot;name&quot;: &quot;my-music&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;my-music use electron and vue&quot;,
+  &quot;main&quot;: &quot;main.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;electron .&quot;
+  },
+  &quot;keywords&quot;: [
+    &quot;my-music&quot;,
+    &quot;vue&quot;,
+    &quot;electron&quot;
+  ],
+  &quot;author&quot;: &quot;gpxiao&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;devDependencies&quot;: {
+    &quot;electron-prebuilt&quot;: &quot;^1.3.3&quot;
+  }
+}</code></p>
+<p>安装依赖；</p>
+<p><code>npm install electron-prebuilt --save-dev</code></p>
+<p>安装完之后可以看到<code>my-music\node_modules\.bin\electron.cmd</code> 命令脚本；
+我们可以配置<code>package.json</code>下面的test命令字：  来启动当前目录的index.html文件；
+可以在当前目录下直接通过elctron运行该项目</p>
+<p><code>&quot;./node_modules/.bin/electron&quot; ./main.js</code></p>
+<p>这样比较麻烦，可以在package.json中配置字段&quot;test&quot;</p>
+<p><code>&quot;test': &quot;electron .&quot;</code></p>
+<p>那这样可以直接在命令行中 <code>npm run test</code> 即可运行了。</p>
+<p>可以看到入口文件就是main.js，载入当前目录的index.html文件（Vue构建的一个音乐播放器代码），这里不细说,主要是通过Vue.js和vue-router，vue-resource开发的一个音乐播放器；</p>
+<pre><code>```
+&lt;body class=&quot;page&quot;&gt;
+  &lt;header class=&quot;header&quot;&gt;
+    &lt;a v-link=&quot;{ name: 'home' }&quot;&gt;&lt;i class=&quot;fa fa-expand&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    &lt;h1&gt;&lt;i class=&quot;fa fa-music&quot;&gt;&lt;/i&gt; Music Player&lt;/h1&gt;
+    &lt;a v-link=&quot;{ name: 'list' }&quot;&gt;&lt;i class=&quot;fa fa-list&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+  &lt;/header&gt;
+  &lt;section class=&quot;main&quot;&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+  &lt;/section&gt;
+  &lt;script id=&quot;home_tmpl&quot; type=&quot;text/v-template&quot;&gt;
+    &lt;img src=&quot;assets/img/home.png&quot; alt=&quot;&quot; width=&quot;100%&quot;&gt;
+  &lt;/script&gt;
+  &lt;script id=&quot;list_tmpl&quot; type=&quot;text/v-template&quot;&gt;
+    &lt;div class=&quot;list&quot;&gt;
+      &lt;ol&gt;
+        &lt;li v-for=&quot;item in list&quot;&gt;
+          &lt;a v-link=&quot;{ name: 'item', params: { id: item.id } }&quot;&gt;
+            &lt;span class=&quot;num&quot;&gt;{{pad(item.id, 3)}}&lt;/span&gt;
+            &lt;div class=&quot;info&quot;&gt;
+              &lt;h3 class=&quot;title&quot;&gt;{{item.name}}&lt;/h3&gt;
+              &lt;span class=&quot;artist&quot;&gt;{{item.artist}}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;span class=&quot;duration&quot;&gt;{{item.duration}}&lt;/span&gt;
+            &lt;div class=&quot;photo&quot;&gt;&lt;img :src=&quot;item.poster&quot;&gt;&lt;/div&gt;
+          &lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/div&gt;
+  &lt;/script&gt;
+  &lt;script id=&quot;item_tmpl&quot; type=&quot;text/v-template&quot;&gt;
+    &lt;div class=&quot;player&quot;&gt;
+      &lt;div class=&quot;disc&quot;&gt;
+        &lt;img :src=&quot;item.poster&quot; alt=&quot;{{item.name}}&quot; :style=&quot;{transform:'rotate(' + (item.current/item.duration*360*2) + 'deg)'}&quot;&gt;
+        &lt;span class=&quot;duration&quot;&gt;{{convert(item.duration-item.current)}}&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;h2 class=&quot;title&quot;&gt;{{item.name}}&lt;/h2&gt;
+      &lt;h3 class=&quot;artist&quot;&gt;{{item.artist}}&lt;/h3&gt;
+      &lt;div class=&quot;lyric&quot;&gt;
+        &lt;p class=&quot;previous&quot;&gt;人如天上的明月是不可拥有&lt;/p&gt;
+        &lt;p class=&quot;current&quot;&gt;情如曲过只遗留无可挽救再分别&lt;/p&gt;
+        &lt;p class=&quot;next&quot;&gt;为何只是失望填密我的空虚&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;input type=&quot;range&quot; value=&quot;0&quot; min=&quot;0&quot; max=&quot;{{item.duration}}&quot; v-model=&quot;item.current&quot; @change=&quot;progress()&quot;&gt;
+      &lt;div class=&quot;controls&quot;&gt;
+        &lt;button&gt;&lt;i class=&quot;fa fa-retweet&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;button class=&quot;active&quot; @click=&quot;prev()&quot;&gt;&lt;i class=&quot;fa fa-backward&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;button class=&quot;active&quot; @click=&quot;play()&quot;&gt;&lt;i class=&quot;fa&quot; :class=&quot;{'fa-play':!item.playing, 'fa-pause':item.playing}&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;button class=&quot;active&quot; @click=&quot;next()&quot;&gt;&lt;i class=&quot;fa fa-forward&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+        &lt;button class=&quot;active&quot;&gt;&lt;i class=&quot;fa fa-random&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/script&gt;
+  &lt;script src=&quot;libs/vue/vue.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;libs/vue-router/vue-router.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;libs/vue-resource/vue-resource.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;app.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+```
+</code></pre>
+
+<p>先看在浏览器中的效果</p>
+<p><img src="http://i.imgur.com/2b2XYxo.jpg" /></p>
+<p>这样项目可以在electron运行起来的原因是： 在app.js中使用的都是jsonp的方式来获取服务端的数据，这样的话，就不存在跨域的问题了，只要服务器这边运行起来了，就可以通过jsonp的方式获得相应的数据；</p>
+<p>如何讲我们的应用部署为一个桌面应用，双击就能打开？</p>
+<h1>应用部署</h1>
+<p>为了使用 Electron 部署你的应用程序，你存放应用程序的文件夹需要叫做 <code>app</code> 并且需要放在 Electron 的
+资源文件夹下（在 macOS 中是指 <code>Electron.app/Contents/Resources/</code>，在 Linux 和 Windows 中是指 <code>resources/</code>）
+就像这样：</p>
+<p>在 macOS 中:</p>
+<pre><code>```text
+electron/Electron.app/Contents/Resources/app/
+├── package.json
+├── main.js
+└── index.html
+```
+</code></pre>
+
+<p>在 Windows 和 Linux 中:</p>
+<pre><code>```text
+electron/resources/app
+├── package.json
+├── main.js
+└── index.html
+```
+</code></pre>
+
+<p>然后运行 <code>Electron.app</code> （或者 Linux 中的 <code>electron</code>，Windows 中的 <code>electron.exe</code>）,
+接着 Electron 就会以你的应用程序的方式启动。<code>electron</code> 文件夹将被部署并可以分发给最终的使用者。</p>
+<h2>将你的应用程序打包成一个文件</h2>
+<p>除了通过拷贝所有的资源文件来分发你的应用程序之外，你可以通过打包你的应用程序为一个 <a href="https://github.com/atom/asar">asar</a> 库文件以避免暴露你的源代码。</p>
+<p>为了使用一个 <code>asar</code> 库文件代替 <code>app</code> 文件夹，你需要修改这个库文件的名字为 <code>app.asar</code> ，
+然后将其放到 Electron 的资源文件夹下，然后 Electron 就会试图读取这个库文件并从中启动。
+如下所示：</p>
+<p>在 macOS 中:</p>
+<pre><code>```text
+electron/Electron.app/Contents/Resources/
+└── app.asar
+```
+</code></pre>
+
+<p>在 Windows 和 Linux 中:</p>
+<pre><code>```text
+electron/resources/
+└── app.asar
+```
+</code></pre>
+
+<p>这样的我们的音乐播放器就顺利生成了。可以看到生成了相应的exe安装文件</p>
+<p><img src="http://i.imgur.com/Qm5hAuC.jpg" /></p>
+<p>可以用自己的音乐播放器听歌了</p>
+<p><img src="http://i.imgur.com/ocKUNu3.gif" /></p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
